@@ -5,7 +5,7 @@ char = string.ascii_uppercase
 data = {}
 all_set = []
 yy, mm, dd = 2015, 11, 23
-name_hoon = input('ใส่ชื่อหุ้นที่ต้องการดูกราฟ : ')
+name_hoon = input('ใส่ชื่อหุ้นที่ต้องการดูกราฟ : ').upper()
 day_in = int(input('จำนวนวันที่ต้องการดูย้อนหลังของหุ้นตัวนั้น : '))
 total = day_in
 while total > 0:
