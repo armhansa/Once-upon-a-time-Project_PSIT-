@@ -6,7 +6,7 @@ from datetime import datetime
 yy, mm, dd = 2015, 12, 1
 name_hoon = input('ใส่ชื่อหุ้นที่ต้องการดูกราฟ : ').upper()
 day_in = int(input('จำนวนวันที่ต้องการดูย้อนหลังของหุ้นตัวนั้น : '))
-data_open, data_close, data_high, data_low, data_vol, date = [], [], [], [], [], []
+open_data, data_close, data_high, data_low, data_vol, date = [], [], [], [], [], []
 while day_in > 0:
     step_day = 'set-history_EOD_'+'%d-%02d-%02d.csv' % (yy, mm, dd)
     try:
