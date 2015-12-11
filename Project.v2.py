@@ -19,7 +19,8 @@ while day_in > 0:
                 data_low.append(float(row[4]))
                 data_close.append(float(row[5]))
                 data_vol.append(float(row[6]))
-                date.append(datetime(year = int(row[1][0:4]), month = int(row[1][4:6]), day = int(row[1][6:]))
+                date.append(datetime(year = int(row[1][0:4]), month = int(row[1][4:6]), day = int(row[1][6:])))
+
         day_in -= 1
     except:
         pass
