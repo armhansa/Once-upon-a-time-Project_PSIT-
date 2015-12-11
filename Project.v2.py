@@ -20,7 +20,6 @@ while day_in > 0:
                 data_close.append(float(row[5]))
                 data_vol.append(float(row[6]))
                 date.append(datetime(year = int(row[1][0:4]), month = int(row[1][4:6]), day = int(row[1][6:]))
-                
         day_in -= 1
     except:
         pass
@@ -33,3 +32,6 @@ while day_in > 0:
         yy -= 1
         mm = 12
 
+fig = FF.create_candlestick(open_data, high_data, low_data, close_data, dates=dates)
+
+plot_url = py.plot(fig, filename='finance/simple-candlestick', validate=False)
