@@ -2,6 +2,7 @@ import csv
 import plotly.plotly as py
 from plotly.tools import FigureFactory as FF
 from datetime import datetime
+py.sign_in('5z3nnr8v', 'fqyao8qk62')
 yy, mm, dd = 2015, 12, 1
 name_hoon = input('ใส่ชื่อหุ้นที่ต้องการดูกราฟ : ').upper()
 day_in = int(input('จำนวนวันที่ต้องการดูย้อนหลังของหุ้นตัวนั้น : '))
