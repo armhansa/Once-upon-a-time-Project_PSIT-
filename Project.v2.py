@@ -38,7 +38,7 @@ name_stock = input('Stock Name : ').upper()
 day_in = int(input('Rate Time : '))
 future = int(input('Future : '))
 total = day_in
-open_data, close_data, high_data, low_data, vol_data, dates = [], [], [], [], [], []
+open_data, close_data, high_data, low_data, values_data, dates = [], [], [], [], [], []
 while day_in > 0:
     step_day = 'set-history_EOD_'+'%d-%02d-%02d.csv' % (year, month, day)
     try:
@@ -51,7 +51,6 @@ while day_in > 0:
                 high_data.append(float(row[3]))
                 low_data.append(float(row[4]))
                 close_data.append(float(row[5]))
-                vol_data.append(float(row[6]))
                 values_data.append(float(row[6])*float(row[5]))
                 dates.append(datetime(year = int(row[1][0:4]), month = int(row[1][4:6]), day = int(row[1][6:])))
         if bug == 1:
@@ -68,7 +67,7 @@ while day_in > 0:
         year -= 1
         month = 12
 
-open_data, close_data, high_data, low_data, vol_data, dates = open_data[::-1], close_data[::-1], high_data[::-1], low_data[::-1], vol_data[::-1], dates[::-1]
+open_data, close_data, high_data, low_data, values_data, dates = open_data[::-1], close_data[::-1], high_data[::-1], low_data[::-1], values_data[::-1], dates[::-1]
 
 data_sma, date_sma = make_sma(future, close_data, dates)
 data_ema15, date_ema15 = make_ema(15, close_data, dates)
