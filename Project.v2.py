@@ -76,14 +76,14 @@ data_ema50, date_ema50 = make_ema(50, close_data, dates)
 add_sma = Scatter(
     x=date_sma, 
     y=data_sma, 
-    name= 'SMA%d Price' % (future), 
-    line=Line(color='black')
+    name= 'SMA%d' % (future), 
+    line=Line(color='rgb(166,212,64)')
     )
 add_ema15 = Scatter(
     x=date_ema15, 
     y=data_ema15, 
     name= 'EMA15', 
-    line=Line(color='green')
+    line=Line(color='purple')
     )
 add_ema50 = Scatter(
     x=date_ema50,
@@ -91,16 +91,22 @@ add_ema50 = Scatter(
     name= 'EMA50',
     line=Line(color='blue')
     )
+#add_value = Scatter(
+#    x=dates,
+#    y=values_data,
+#    name= 'Value',
+#    line=Line(color='purple')
+#    )
 fig = FF.create_candlestick(open_data, high_data, low_data, close_data, dates=dates)
 fig['layout'].update({
-    'title': 'Stock',
+    'title': name_stock,
     'yaxis': {'title': 'Price'},
-    'xaxis': {'title': 'Time'}
+    'xaxis': {'title': 'Dates'}
 })
 fig['data'].extend([add_sma])
 fig['data'].extend([add_ema15])
 fig['data'].extend([add_ema50])
-plot_url = py.plot(fig, filename='finance/simple-candlestick', validate=False)
+plot_url = py.plot(fig, filename='candlestick', validate=False)
 
 data = [
     go.Scatter(
@@ -108,4 +114,5 @@ data = [
         y=values_data
     )
 ]
+
 plot_url = py.plot(data, filename='python-datetime')
