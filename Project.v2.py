@@ -36,7 +36,7 @@ def make_sma(future, data_close, dates):
 year, month, day = 2015, 12, 11
 name_stock = input('Stock Name : ').upper()
 day_in = int(input('Rate Time : '))
-future = int(input('Future : '))
+future = int(input('SMA(days) : '))
 total = day_in
 open_data, close_data, high_data, low_data, values_data, dates = [], [], [], [], [], []
 while day_in > 0:
