@@ -5,7 +5,7 @@ from plotly.tools import FigureFactory as FF
 import plotly.graph_objs as go
 from plotly.graph_objs import *
 from datetime import datetime
-py.sign_in('armhansa', 'um3r605dt8')
+py.sign_in('winrhcp', 'vh4aobsxjl')
 
 def make_ema(smooting, data_close, dates):
     """make list with can graph of EMA"""
