@@ -9,9 +9,7 @@ year, month, day = 2015, 12, 11
 name_stock = input('Stock Name : ').upper()
 day_in = int(input('Rate Time : '))
 future = int(input('Future : '))
-ema15, ema50 = 0, 0
 total = day_in
-data_ema, ema = [], 0
 open_data, close_data, high_data, low_data, vol_data, dates = [], [], [], [], [], []
 while day_in > 0:
     step_day = 'set-history_EOD_'+'%d-%02d-%02d.csv' % (year, month, day)
@@ -50,20 +48,28 @@ for i in range(total):
             date_sma.append(dates[i+1])
         else:
             date_sma.append(datetime(year = 2015, month = 12, day = 12))
-for i in range(total):
-    data_ema.append(ema+(2/(future+1))*(close_data[i])-ema)
+
+data_ema, date_ema, alfa = [close_data[0]], [dates[0]], 2/(15+1)
+for i in range(1, len(close_data)+1):
+    data_ema.append(data_ema[i-1]+(alfa*(close_data[i-1]-data_ema[i-1])))
+    if i == len(close_data):
+        date_ema.append(datetime(year = 2015, month = 12, day = 12))
+    else:
+        date_ema.append(dates[i])
+
 add_sma = Scatter(
     x=date_sma, 
     y=data_sma, 
-    name= 'SMA', 
+    name= 'SMA Price', 
     line=Line(color='black')
     )
 add_ema = Scatter(
-    x=date_sma, 
+    x=date_ema, 
     y=data_ema, 
-    name= 'EMA', 
-    line=Line(color='green')
+    name= 'EMA15 Price', 
+    line=Line(color='pink')
     )
+
 fig = FF.create_candlestick(open_data, high_data, low_data, close_data, dates=dates)
 fig['layout'].update({
     'title': 'Stock',
