@@ -10,6 +10,7 @@ name_stock = input('Stock Name : ').upper()
 day_in = int(input('Rate Time : '))
 future = int(input('Future : '))
 total = day_in
+data_ema, ema = [], 0
 open_data, close_data, high_data, low_data, vol_data, dates = [], [], [], [], [], []
 while day_in > 0:
     step_day = 'set-history_EOD_'+'%d-%02d-%02d.csv' % (year, month, day)
@@ -48,19 +49,26 @@ for i in range(total):
             date_sma.append(dates[i+1])
         else:
             date_sma.append(datetime(year = 2015, month = 12, day = 12))
-
-add_line = Scatter(
+for i in range(total):
+    data_ema.append(ema+(2/(future+1))*(close_data[i])-ema)
+add_sma = Scatter(
     x=date_sma, 
     y=data_sma, 
     name= 'SMA', 
     line=Line(color='black')
     )
-
+add_ema = Scatter(
+    x=date_sma, 
+    y=data_sma, 
+    name= 'EMA', 
+    line=Line(color='green')
+    )
 fig = FF.create_candlestick(open_data, high_data, low_data, close_data, dates=dates)
 fig['layout'].update({
     'title': 'Stock',
     'yaxis': {'title': 'Price'},
     'xaxis': {'title': 'Time'}
 })
-fig['data'].extend([add_line])
+fig['data'].extend([add_sma])
+fig['data'].extend([add_ema])
 plot_url = py.plot(fig, filename='finance/simple-candlestick', validate=False)
