@@ -9,6 +9,7 @@ year, month, day = 2015, 12, 11
 name_stock = input('Stock Name : ').upper()
 day_in = int(input('Rate Time : '))
 future = int(input('Future : '))
+ema15, ema50 = 0, 0
 total = day_in
 data_ema, ema = [], 0
 open_data, close_data, high_data, low_data, vol_data, dates = [], [], [], [], [], []
@@ -59,7 +60,7 @@ add_sma = Scatter(
     )
 add_ema = Scatter(
     x=date_sma, 
-    y=data_sma, 
+    y=data_ema, 
     name= 'EMA', 
     line=Line(color='green')
     )
