@@ -51,7 +51,7 @@ def step_day(year, month, day):
 
 def main(stock_name, day_in, future):
     """Control DataBase and make graph if have stock_name"""
-    year, month, day = 2015, 12, 11
+    year, month, day = 2015, 12, 12
     open_data, close_data, high_data, low_data, values_data, dates = [], [], [], [], [], []
     while day_in > 0:
         file_name = 'set-history_EOD_'+'%d-%02d-%02d.csv' % step_day(year, month, day)
