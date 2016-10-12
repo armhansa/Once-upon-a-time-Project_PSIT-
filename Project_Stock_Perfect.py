@@ -10,7 +10,7 @@ py.sign_in('armhansa', 'um3r605dt8')
 def make_ema(smooting, close_data, dates):
     """make list with can graph of EMA"""
     data_ema, date_ema, alfa = [close_data[0]], [dates[0]], 2/(smooting+1)
-    for i in range(1, len(close_data)+1):
+    for i in range(1, len(close_data)+2):
         data_ema.append(data_ema[i-1]+(alfa*(close_data[i-1]-data_ema[i-1])))
         if i == len(close_data):
             date_ema.append(datetime(year = 2015, month = 12, day = 12))
