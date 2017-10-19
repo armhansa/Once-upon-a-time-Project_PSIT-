@@ -54,7 +54,7 @@ def main(stock_name, day_in, future):
     year, month, day = 2015, 12, 12
     open_data, close_data, high_data, low_data, values_data, dates = [], [], [], [], [], []
     while day_in > 0:
-        file_name = 'set-history_EOD_'+'%d-%02d-%02d.csv' % step_day(year, month, day)
+        file_name = 'data\set-history_EOD_'+'%d-%02d-%02d.csv' % step_day(year, month, day)
         try:
             temporary = csv.reader(open(file_name, 'r'))
             bug = 1
